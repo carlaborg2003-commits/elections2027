@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Élections 2027 — Ajouter à mon agenda</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a2260; color: #fff; font-family: system-ui, -apple-system, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+  .card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 2.5rem 2rem; max-width: 480px; width: 100%; text-align: center; }
+  h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+  .sub { font-size: 0.95rem; opacity: 0.6; margin-bottom: 2rem; }
+  .dates { text-align: left; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 8px; }
+  .date-row { display: flex; gap: 12px; align-items: center; background: rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 14px; }
+  .date-label { font-size: 0.78rem; font-weight: 700; opacity: 0.6; min-width: 70px; }
+  .date-name { font-size: 0.9rem; }
+  .btn { display: inline-block; background: #e63946; color: #fff; font-size: 1.05rem; font-weight: 700; padding: 16px 32px; border-radius: 12px; text-decoration: none; border: none; cursor: pointer; width: 100%; transition: background 0.15s; }
+  .btn:hover { background: #c1121f; }
+  .note { font-size: 0.78rem; opacity: 0.45; margin-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>🗳️ ÉLECTIONS 2027</h1>
+  <p class="sub">Ajoute toutes les dates importantes à ton agenda en un clic</p>
+
+  <div class="dates">
+    <div class="date-row"><span class="date-label">2 mars</span><span class="date-name">Fin des inscriptions électorales</span></div>
+    <div class="date-row"><span class="date-label">15 mars</span><span class="date-name">Début de la campagne</span></div>
+    <div class="date-row"><span class="date-label">27 mars</span><span class="date-name">Débat présidentiel</span></div>
+    <div class="date-row"><span class="date-label">30 mars</span><span class="date-name">Fin des procurations</span></div>
+    <div class="date-row" style="border-left: 3px solid #e63946;"><span class="date-label">11 avril</span><span class="date-name" style="font-weight:700;">1er tour — Allez voter !</span></div>
+    <div class="date-row"><span class="date-label">12 avril</span><span class="date-name">Résultats du 1er tour</span></div>
+    <div class="date-row"><span class="date-label">14→25 avr.</span><span class="date-name">Campagne du second tour</span></div>
+    <div class="date-row" style="border-left: 3px solid #e63946;"><span class="date-label">25 avril</span><span class="date-name" style="font-weight:700;">2nd tour — Allez voter !</span></div>
+    <div class="date-row"><span class="date-label">26 avril</span><span class="date-name">Résultats du 2nd tour 🎉</span></div>
+  </div>
+
+  <a class="btn" id="ics-btn" href="#">📅 Ajouter à mon agenda</a>
+  <p class="note">Compatible Google Agenda, Apple Calendar, Outlook</p>
+</div>
+
+<script>
+const icsB64 = "QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL0VsZWN0aW9uczIwMjcvL0dyw7xudC8vRlINCkNBTFNDQUxFOkdSRUdPUklBTg0KTUVUSE9EOlBVQkxJU0gNClgtV1ItQ0FMTkFNRTpFbGVjdGlvbnMgcHJlc2lkZW50aWVsbGVzIDIwMjcNClgtV1ItVElNRVpPTkU6RXVyb3BlL1BhcmlzDQpCRUdJTjpWRVZFTlQNClVJRDplbGVjdGlvbjIwMjctMEBncnVudA0KRFRTVEFNUDoyMDI2MDUyN1QwMDAwMDBaDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzAzMDINCkRURU5EO1ZBTFVFPURBVEU6MjAyNzAzMDMNClNVTU1BUlk6RmluIGRlcyBpbnNjcmlwdGlvbnMgZWxlY3RvcmFsZXMNCkVORDpWRVZFTlQNCkJFR0lOOlZFVkVOVA0KVUlEOmVsZWN0aW9uMjAyNy0xQGdydW50DQpEVFNUQU1QOjIwMjYwNTI3VDAwMDAwMFoNCkRUU1RBUlQ7VkFMVUU9REFURToyMDI3MDMxNQ0KRFRFTkQ7VkFMVUU9REFURToyMDI3MDMxNg0KU1VNTUFSWTpEZWJ1dCBkZSBsYSBjYW1wYWduZSBwcmVzaWRlbnRpZWxsZQ0KRU5EOlZFVkVOVA0KQkVHSU46VkVWRU5UDQpVSUQ6ZWxlY3Rpb24yMDI3LTJAZ3J1bnQNCkRUU1RBTVA6MjAyNjA1MjdUMDAwMDAwWg0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwMzI3DQpEVEVORDtWQUxVRT1EQVRFOjIwMjcwMzI4DQpTVU1NQVJZOkRlYmF0IHByZXNpZGVudGllbA0KRU5EOlZFVkVOVA0KQkVHSU46VkVWRU5UDQpVSUQ6ZWxlY3Rpb24yMDI3LTNAZ3J1bnQNCkRUU1RBTVA6MjAyNjA1MjdUMDAwMDAwWg0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwMzMwDQpEVEVORDtWQUxVRT1EQVRFOjIwMjcwMzMxDQpTVU1NQVJZOkZpbiBkZXMgcHJvY3VyYXRpb25zDQpFTkQ6VkVWRU5UDQpCRUdJTjpWRVZFTlQNClVJRDplbGVjdGlvbjIwMjctNEBncnVudA0KRFRTVEFNUDoyMDI2MDUyN1QwMDAwMDBaDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA0MTENCkRURU5EO1ZBTFVFPURBVEU6MjAyNzA0MTINClNVTU1BUlk6MWVyIHRvdXIgLSBBbGxleiB2b3RlciAhDQpFTkQ6VkVWRU5UDQpCRUdJTjpWRVZFTlQNClVJRDplbGVjdGlvbjIwMjctNUBncnVudA0KRFRTVEFNUDoyMDI2MDUyN1QwMDAwMDBaDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA0MTINCkRURU5EO1ZBTFVFPURBVEU6MjAyNzA0MTMNClNVTU1BUlk6UmVzdWx0YXRzIGR1IHByZW1pZXIgdG91cg0KRU5EOlZFVkVOVA0KQkVHSU46VkVWRU5UDQpVSUQ6ZWxlY3Rpb24yMDI3LTZAZ3J1bnQNCkRUU1RBTVA6MjAyNjA1MjdUMDAwMDAwWg0KRFRTVEFSVDtWQUxVRT1EQVRFOjIwMjcwNDE0DQpEVEVORDtWQUxVRT1EQVRFOjIwMjcwNDI2DQpTVU1NQVJZOkNhbXBhZ25lIGR1IHNlY29uZCB0b3VyDQpFTkQ6VkVWRU5UDQpCRUdJTjpWRVZFTlQNClVJRDplbGVjdGlvbjIwMjctN0BncnVudA0KRFRTVEFNUDoyMDI2MDUyN1QwMDAwMDBaDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA0MjUNCkRURU5EO1ZBTFVFPURBVEU6MjAyNzA0MjYNClNVTU1BUlk6Mm5kIHRvdXIgLSBBbGxleiB2b3RlciAhDQpFTkQ6VkVWRU5UDQpCRUdJTjpWRVZFTlQNClVJRDplbGVjdGlvbjIwMjctOEBncnVudA0KRFRTVEFNUDoyMDI2MDUyN1QwMDAwMDBaDQpEVFNUQVJUO1ZBTFVFPURBVEU6MjAyNzA0MjYNCkRURU5EO1ZBTFVFPURBVEU6MjAyNzA0MjcNClNVTU1BUlk6UmVzdWx0YXRzIGR1IHNlY29uZCB0b3VyICENCkVORDpWRVZFTlQNCkVORDpWQ0FMRU5EQVI=";
+
+function b64toBlob(b64, mime) {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return new Blob([arr], { type: mime });
+}
+
+document.getElementById('ics-btn').addEventListener('click', function(e) {
+  e.preventDefault();
+  const blob = b64toBlob(icsB64, 'text/calendar;charset=utf-8');
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'elections2027.ics';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+</script>
+</body>
+</html>
